@@ -1,43 +1,69 @@
 /*
- * /H5 Sorting
+ * H5 Sorting
  */
- 
-public class H5 {
- 
-    // logic to sort the elements
-    public static void bubble_srt(int array[]) {
+import java.util.Random;
+public class H5 
+{   
+    /*
+     * method that sorts the list
+     * parameter: the array
+     */
+    public static void bubbleSort(int array[]) 
+    {
         int n = array.length;
         int k;
-        for (int m = n; m >= 0; m--) {
-            for (int i = 0; i < n - 1; i++) {
+        for (int m = n; m >= 0; m--) 
+        {
+            for (int i = 0; i < n - 1; i++) 
+            {
                 k = i + 1;
-                if (array[i] > array[k]) {
+                if (array[i] > array[k]) 
                     swapNumbers(i, k, array);
-                }
             }
-            printNumbers(array);
         }
     }
- 
-    private static void swapNumbers(int i, int j, int[] array) {
- 
+    /*
+     * method to swap the numbers in the sort
+     * parameters: two ints to swap and the array
+     */
+    public static void swapNumbers(int i, int j, int[] array) 
+    {
         int temp;
         temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
- 
-    private static void printNumbers(int[] input) {
-         
-        for (int i = 0; i < input.length; i++) {
-            System.out.print(input[i] + ", ");
+    /*
+     * method to print the numbers in the array
+     * parameter: the array
+     */
+    public static void printNumbers(int[] input) 
+    {     
+        for (int i = 0; i < input.length; i++) 
+        {
+          System.out.print(input[i] + ", ");
         }
         System.out.println("\n");
+    } 
+    
+    //method that generates a random int from 0-25
+    public static int rand()
+    {
+      Random rand = new Random();
+      int n = rand.nextInt(25);
+      return n;
     }
- 
-    public static void main(String[] args) {
-        int[] input = { 4, 2, 9, 6, 7, 5, 8, 0, 1, 3, 10 };
-        bubble_srt(input);
- 
+
+    //MAIN METHOD
+    public static void main(String[] args) 
+    {
+      //populate with 7 random ints from 0-25
+      int[] input = { rand(), rand(), rand(), rand(), rand(), rand(), rand()};
+      //prints unsorted
+      printNumbers(input);
+      //sorts
+      bubbleSort(input);
+      //prints sorted
+      printNumbers(input);
     }
 }
